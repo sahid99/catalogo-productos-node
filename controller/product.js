@@ -14,14 +14,26 @@ const addProduct = (req, res) => {
             "select * from products",
             function (error, results, fields) {
               if (!error) {
-                res.status(200).send(JSON.stringify(results));
+                res
+                  .status(200)
+                  .json({ success: true, message: "All good!", results });
               } else {
-                res.status(500).send([]);
+                res.status(500).json({
+                  success: false,
+                  message: "Server error",
+                  error,
+                  results: [],
+                });
               }
             }
           );
         } else {
-          res.status(500).send(error);
+          res.status(500).json({
+            success: false,
+            message: "Server error",
+            error,
+            results: [],
+          });
         }
       }
     );
@@ -33,9 +45,14 @@ const addProduct = (req, res) => {
 const getProducts = (req, res) => {
   connection.query("select * from products", function (error, results, fields) {
     if (!error) {
-      res.status(200).send(JSON.stringify(results));
+      res.status(200).json({ success: true, message: "All good!", results });
     } else {
-      res.status(500).send([]);
+      res.status(500).json({
+        success: false,
+        message: "Server error",
+        error,
+        results: [],
+      });
     }
   });
 };
@@ -53,14 +70,26 @@ const modifyProduct = (req, res) => {
             "select * from products",
             function (error, results, fields) {
               if (!error) {
-                res.status(200).send(JSON.stringify(results));
+                res
+                  .status(200)
+                  .json({ success: true, message: "All good!", results });
               } else {
-                res.status(500).send([]);
+                res.status(500).json({
+                  success: false,
+                  message: "Server error",
+                  error,
+                  results: [],
+                });
               }
             }
           );
         } else {
-          res.status(500).send(error);
+          res.status(500).json({
+            success: false,
+            message: "Server error",
+            error,
+            results: [],
+          });
         }
       }
     );
@@ -82,14 +111,26 @@ const deleteProduct = (req, res) => {
             "select * from products",
             function (error, results, fields) {
               if (!error) {
-                res.status(200).send(JSON.stringify(results));
+                res
+                  .status(200)
+                  .json({ success: true, message: "All good!", results });
               } else {
-                res.status(500).send([]);
+                res.status(500).json({
+                  success: false,
+                  message: "Server error",
+                  error,
+                  results: [],
+                });
               }
             }
           );
         } else {
-          res.status(500).send(error);
+          res.status(500).json({
+            success: false,
+            message: "Server error",
+            error,
+            results: [],
+          });
         }
       }
     );

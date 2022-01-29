@@ -7,6 +7,7 @@ const connection = require("./db");
 
 const products = require("./routes/product");
 const categories = require("./routes/category");
+const auth = require("./routes/auth");
 
 //settings
 dotenv.config({ path: "./.env" });
@@ -19,6 +20,7 @@ app.use(express.json());
 
 // routes
 app.get("/", (req, res) => res.send("API Works!"));
+app.use("/auth", auth);
 app.use("/products", products);
 app.use("/categories", categories);
 

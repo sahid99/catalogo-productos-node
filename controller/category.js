@@ -14,12 +14,26 @@ const addCategory = (req, res) => {
               if (!error) {
                 res.status(200).send(JSON.stringify(results));
               } else {
-                res.status(500).send([]);
+                res
+                  .status(500)
+                  .json({
+                    success: false,
+                    message: "Server error",
+                    error,
+                    results: [],
+                  });
               }
             }
           );
         } else {
-          res.status(500).send(error);
+          res
+            .status(500)
+            .json({
+              success: false,
+              message: "Server error",
+              error,
+              results: [],
+            });
         }
       }
     );
@@ -33,9 +47,16 @@ const getCategories = (req, res) => {
     "select * from categories",
     function (error, results, fields) {
       if (!error) {
-        res.status(200).send(JSON.stringify(results));
+        res.status(500).json({ success: true, message: "All good!", results });
       } else {
-        res.status(500).send([]);
+        res
+          .status(500)
+          .json({
+            success: false,
+            message: "Server error",
+            error,
+            results: [],
+          });
       }
     }
   );
@@ -54,14 +75,30 @@ const modifyCategory = (req, res) => {
             "select * from categories",
             function (error, results, fields) {
               if (!error) {
-                res.status(200).send(JSON.stringify(results));
+                res
+                  .status(500)
+                  .json({ success: true, message: "All good!", results });
               } else {
-                res.status(500).send([]);
+                res
+                  .status(500)
+                  .json({
+                    success: false,
+                    message: "Server error",
+                    error,
+                    results: [],
+                  });
               }
             }
           );
         } else {
-          res.status(500).send(error);
+          res
+            .status(500)
+            .json({
+              success: false,
+              message: "Server error",
+              error,
+              results: [],
+            });
         }
       }
     );
@@ -83,14 +120,30 @@ const deleteCategory = (req, res) => {
             "select * from categories",
             function (error, results, fields) {
               if (!error) {
-                res.status(200).send(JSON.stringify(results));
+                res
+                  .status(500)
+                  .json({ success: true, message: "All good!", results });
               } else {
-                res.status(500).send([]);
+                res
+                  .status(500)
+                  .json({
+                    success: false,
+                    message: "Server error",
+                    error,
+                    results: [],
+                  });
               }
             }
           );
         } else {
-          res.status(500).send(error);
+          res
+            .status(500)
+            .json({
+              success: false,
+              message: "Server error",
+              error,
+              results: [],
+            });
         }
       }
     );

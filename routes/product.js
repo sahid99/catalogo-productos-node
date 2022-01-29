@@ -9,8 +9,8 @@ const {
 } = require("../controller/product");
 
 router.get("/getProducts", getProducts);
-router.post("/addProduct", addProduct);
-router.post("/modifyProduct", modifyProduct);
-router.post("/deleteProduct", deleteProduct);
+router.post("/addProduct", verifyToken, addProduct);
+router.post("/modifyProduct", verifyToken, modifyProduct);
+router.post("/deleteProduct", verifyToken, deleteProduct);
 
 module.exports = router;
