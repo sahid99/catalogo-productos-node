@@ -36,8 +36,7 @@ const getCategories = (req, res) => {
     });
 };
 
-const modifyCategory = async (req, res) => {
-    const { db } = await connectToDatabase();
+const modifyCategory = (req, res) => {
     const { categoryName, _id } = req.body;
 
     if (categoryName && _id) {
@@ -68,8 +67,7 @@ const modifyCategory = async (req, res) => {
 
 }
 
-const deleteCategory = async (req, res) => {
-    const { db } = await connectToDatabase();
+const deleteCategory = (req, res) => {
     const { _id } = req.body;
 
     if (_id) {
