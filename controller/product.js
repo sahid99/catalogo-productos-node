@@ -43,7 +43,7 @@ const addProduct = (req, res) => {
 const getProducts = (req, res) => {
   connection.query("select * from products", function (error, results, fields) {
     if (!error) {
-      res.status(200).json({ success: true, message: "All good!", results });
+      res.status(200).json(results);
     } else {
       res.status(500).json({
         success: false,

@@ -2,6 +2,7 @@ const express = require("express");
 const morgan = require("morgan");
 const dotenv = require("dotenv");
 const app = express();
+const cors = require("cors");
 
 const connection = require("./db");
 
@@ -17,6 +18,7 @@ app.set("port", process.env.PORT || 3000);
 app.use(morgan("dev"));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+app.use(cors({origin: 'http://localhost:4200'}))
 
 // routes
 app.get("/", (req, res) => res.send("API Works!"));

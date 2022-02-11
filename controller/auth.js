@@ -18,21 +18,23 @@ const signIn = (req, res) => {
       function (error, results, fields) {
         if (!error) {
           if (results.length > 0) {
-            if (bcrypt.compare(password, results[0].password)) {
-              const token = jwt.sign({ username }, secret, {
-                expiresIn: 60 * 60 * 24 * 2,
-              });
-
-              res.status(200).json({
-                success: true,
-                message: `Welcome ${results[0].username}.`,
-                token,
-              });
-            } else {
-              res
-                .status(401)
-                .json({ success: false, message: "Incorrect password." });
-            }
+            bcrypt.compare(password, results[0].password, (err, match ) => {
+              if(match){
+                const token = jwt.sign({ username }, secret, {
+                  expiresIn: 60 * 60 * 24 * 2,
+                });
+  
+                res.status(200).json({
+                  success: true,
+                  message: `Welcome ${results[0].username}.`,
+                  token,
+                });
+              } else {
+                res
+                  .status(401)
+                  .json({ success: false, message: "Incorrect password." });
+              }
+            }) 
           } else {
             res.status(401).json({
               success: false,
