@@ -18,14 +18,14 @@ const signIn = (req, res) => {
       function (error, results, fields) {
         if (!error) {
           if (results.length > 0) {
-            if (bcrypt.compare(password, result.password)) {
+            if (bcrypt.compare(password, results[0].password)) {
               const token = jwt.sign({ username }, secret, {
                 expiresIn: 60 * 60 * 24 * 2,
               });
 
               res.status(200).json({
                 success: true,
-                message: `Welcome ${results}.`,
+                message: `Welcome ${results[0].username}.`,
                 token,
               });
             } else {

@@ -1,13 +1,11 @@
 const connection = require("../db");
 
 const addProduct = (req, res) => {
-  const { name, price, url, description, categories } = req.body;
+  const { name, price, url, description, category } = req.body;
 
-  if (name && price && url && description && categories) {
-    const categoriesSting = JSON.stringify(categories);
-
+  if (name && price && url && description && category) {
     connection.query(
-      `insert into products (id, name, price, url, description, categories) values (NULL, '${name}', ${price}, '${url}', '${description}', '${categories}')`,
+      `insert into products (id, name, price, url, description, category) values (NULL, '${name}', ${price}, '${url}', '${description}', '${category}')`,
       function (error, results, fields) {
         if (!error) {
           connection.query(
@@ -58,12 +56,12 @@ const getProducts = (req, res) => {
 };
 
 const modifyProduct = (req, res) => {
-  const { id, name, price, url, description, categories } = req.body;
+  const { id, name, price, url, description, category } = req.body;
 
-  if (id && name && price && url && description && categories) {
+  if (id && name && price && url && description && category) {
     connection.query(
-      "update products set name = ?, price = ?, url = ?, description = ?, categories = ? where id = ?",
-      [name, price, url, description, categories, id],
+      "update products set name = ?, price = ?, url = ?, description = ?, category = ? where id = ?",
+      [name, price, url, description, category, id],
       function (error, results, fields) {
         if (!error) {
           connection.query(
