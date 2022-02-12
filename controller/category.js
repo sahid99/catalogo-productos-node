@@ -16,29 +16,19 @@ const addCategory = (req, res) => {
               } else {
                 res
                   .status(500)
-                  .json({
-                    success: false,
-                    message: "Server error",
-                    error,
-                    results: [],
-                  });
+                  .json([]);
               }
             }
           );
         } else {
           res
             .status(500)
-            .json({
-              success: false,
-              message: "Server error",
-              error,
-              results: [],
-            });
+            .json([]);
         }
       }
     );
   } else {
-    return res.status(400).json({ success: false, message: "Bad request" });
+    return res.status(400).json([]);
   }
 };
 
@@ -51,12 +41,7 @@ const getCategories = (req, res) => {
       } else {
         res
           .status(500)
-          .json({
-            success: false,
-            message: "Server error",
-            error,
-            results: [],
-          });
+          .json([]);
       }
     }
   );
@@ -76,34 +61,24 @@ const modifyCategory = (req, res) => {
             function (error, results, fields) {
               if (!error) {
                 res
-                  .status(500)
-                  .json({ success: true, message: "All good!", results });
+                  .status(200)
+                  .json(results);
               } else {
                 res
                   .status(500)
-                  .json({
-                    success: false,
-                    message: "Server error",
-                    error,
-                    results: [],
-                  });
+                  .json([]);
               }
             }
           );
         } else {
           res
             .status(500)
-            .json({
-              success: false,
-              message: "Server error",
-              error,
-              results: [],
-            });
+            .json([]);
         }
       }
     );
   } else {
-    return res.status(400).json({ success: false, message: "Bad request" });
+    return res.status(400).json([]);
   }
 };
 
@@ -121,34 +96,24 @@ const deleteCategory = (req, res) => {
             function (error, results, fields) {
               if (!error) {
                 res
-                  .status(500)
-                  .json({ success: true, message: "All good!", results });
+                  .status(200)
+                  .json(results);
               } else {
                 res
                   .status(500)
-                  .json({
-                    success: false,
-                    message: "Server error",
-                    error,
-                    results: [],
-                  });
+                  .json([]);
               }
             }
           );
         } else {
           res
             .status(500)
-            .json({
-              success: false,
-              message: "Server error",
-              error,
-              results: [],
-            });
+            .json([]);
         }
       }
     );
   } else {
-    return res.status(400).json({ success: false, message: "Bad request" });
+    return res.status(400).json([]);
   }
 };
 
