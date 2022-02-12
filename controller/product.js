@@ -14,29 +14,19 @@ const addProduct = (req, res) => {
               if (!error) {
                 res
                   .status(200)
-                  .json({ success: true, message: "All good!", results });
+                  .json(results);
               } else {
-                res.status(500).json({
-                  success: false,
-                  message: "Server error",
-                  error,
-                  results: [],
-                });
+                res.status(500).json([]);
               }
             }
           );
         } else {
-          res.status(500).json({
-            success: false,
-            message: "Server error",
-            error,
-            results: [],
-          });
+          res.status(500).json([]);
         }
       }
     );
   } else {
-    return res.status(400).json({ success: false, message: "Bad request" });
+    return res.status(400).json([]);
   }
 };
 
@@ -45,12 +35,7 @@ const getProducts = (req, res) => {
     if (!error) {
       res.status(200).json(results);
     } else {
-      res.status(500).json({
-        success: false,
-        message: "Server error",
-        error,
-        results: [],
-      });
+      res.status(500).json([]);
     }
   });
 };
@@ -70,29 +55,19 @@ const modifyProduct = (req, res) => {
               if (!error) {
                 res
                   .status(200)
-                  .json({ success: true, message: "All good!", results });
+                  .json(results);
               } else {
-                res.status(500).json({
-                  success: false,
-                  message: "Server error",
-                  error,
-                  results: [],
-                });
+                res.status(500).json([]);
               }
             }
           );
         } else {
-          res.status(500).json({
-            success: false,
-            message: "Server error",
-            error,
-            results: [],
-          });
+          res.status(500).json([]);
         }
       }
     );
   } else {
-    return res.status(400).json({ success: false, message: "Bad request" });
+    return res.status(400).json([]);
   }
 };
 
@@ -111,29 +86,19 @@ const deleteProduct = (req, res) => {
               if (!error) {
                 res
                   .status(200)
-                  .json({ success: true, message: "All good!", results });
+                  .json(results);
               } else {
-                res.status(500).json({
-                  success: false,
-                  message: "Server error",
-                  error,
-                  results: [],
-                });
+                res.status(500).json([]);
               }
             }
           );
         } else {
-          res.status(500).json({
-            success: false,
-            message: "Server error",
-            error,
-            results: [],
-          });
+          res.status(500).json([]);
         }
       }
     );
   } else {
-    return res.status(400).json({ success: false, message: "Bad request" });
+    return res.status(400).json([]);
   }
 };
 
