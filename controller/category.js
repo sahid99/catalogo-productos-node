@@ -47,7 +47,7 @@ const getCategories = (req, res) => {
     "select * from categories",
     function (error, results, fields) {
       if (!error) {
-        res.status(500).json({ success: true, message: "All good!", results });
+        res.status(200).json(results);
       } else {
         res
           .status(500)
