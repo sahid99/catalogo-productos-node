@@ -15,13 +15,13 @@ const auth = require("./routes/auth");
 
 //settings
 dotenv.config({ path: "./.env" });
-app.set("port", process.env.PORT || 3000);
+app.set("port", process.env.PORT || 8080);
 
 // middlewares
 app.use(morgan("dev"));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-app.use(cors({origin: 'http://localhost:8080'}))
+app.use(cors({origin: 'http://alumnos05.enlacenet.net'}))
 
 // routes
 // const path = __dirname + '/views/';
@@ -34,7 +34,7 @@ app.use("/categories", categories);
 
 // Empezando el servidor
 app.listen(app.get("port"), () => {
-  console.log(`Server at http://localhost:${app.get("port")}`);
+  console.log(`Server at http://alumnos05.enlacenet.net:${app.get("port")}`);
 });
 
 module.exports = app;
