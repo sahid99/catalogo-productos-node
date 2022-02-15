@@ -15,7 +15,7 @@ const auth = require("./routes/auth");
 
 //settings
 dotenv.config({ path: "./.env" });
-app.set("port", process.env.PORT || 8080);
+app.set("port", process.env.PORT || 80);
 
 // middlewares
 app.use(morgan("dev"));
